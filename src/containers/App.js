@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './App.css';
+import styles from './App.scss';
 import ImageComponent from '../components/image-component/image-component';
 import SpritesListComponent from '../components/sprites-list-component/sprites-list-component';
 

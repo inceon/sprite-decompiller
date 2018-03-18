@@ -1,10 +1,28 @@
 #sprites-list-component {
     grid-column: 5;
     grid-row: 1;
+    background-color: darken(#fff, 3%);
+    border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    margin: 5px;
+    padding: 5px;
 
     .sprite-item {
-        color: red;
+        $bg-color: #b0ceff;
+        background: $bg-color;
+        margin: 5px 0;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid darken($bg-color, 5%);
+        color: desaturate(darken($bg-color, 50%), 85%);
+        cursor: pointer;
+        &:hover {
+            background-color: darken($bg-color, 10%);
+            color: desaturate(darken($bg-color, 70%), 85%);
+        }
+        &:first-of-type {
+            margin: 0;
+        }
     }
 }

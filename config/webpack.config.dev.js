@@ -172,35 +172,6 @@ module.exports = {
                                 'postcss-loader'
                             ]
                         })
-                        // use: [
-                        //     require.resolve('style-loader'),
-                        //     {
-                        //         loader: require.resolve('css-loader'),
-                        //         options: {
-                        //             importLoaders: 1
-                        //         }
-                        //     },
-                        //     {
-                        //         loader: require.resolve('postcss-loader'),
-                        //         options: {
-                        //             // Necessary for external CSS imports to work
-                        //             // https://github.com/facebookincubator/create-react-app/issues/2677
-                        //             ident: 'postcss',
-                        //             plugins: () => [
-                        //                 require('postcss-flexbugs-fixes'),
-                        //                 autoprefixer({
-                        //                     browsers: [
-                        //                         '>1%',
-                        //                         'last 4 versions',
-                        //                         'Firefox ESR',
-                        //                         'not ie < 9' // React doesn't support IE8 anyway
-                        //                     ],
-                        //                     flexbox: 'no-2009'
-                        //                 })
-                        //             ]
-                        //         }
-                        //     }
-                        // ]
                     },
                     {
                         test: /\.scss$/,
@@ -248,7 +219,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin({filename: 'styles.css', allChunks: true}),
+        new ExtractTextPlugin({
+            filename: 'styles.css',
+            allChunks: true,
+            disable: process.env.NODE_ENV !== 'production'
+        }),
         // Makes some environment variables available in index.html.
         // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
         // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
