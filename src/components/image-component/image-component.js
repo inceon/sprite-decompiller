@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone'
-import './image-component.scss';
+import styles from './image-component.scss';
 
 export default class ImageComponent extends Component {
     constructor() {
@@ -22,7 +22,7 @@ export default class ImageComponent extends Component {
 
     render() {
         return (
-            <div id="image-component">
+            <div id={styles['image-component']}>
                 <Dropzone onDrop={this.onDrop.bind(this)}>
                     <p>Try dropping some files here, or click to select files to upload.</p>
                 </Dropzone>

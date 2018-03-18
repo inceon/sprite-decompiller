@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './sprites-list-component.scss';
+import styles from './sprites-list-component.scss';
 
 export default class SpritesListComponent extends Component {
     state = {
@@ -8,11 +8,11 @@ export default class SpritesListComponent extends Component {
 
     render() {
         return (
-            <div id="sprites-list-component">
+            <div id={styles['sprites-list-component']}>
                 {
                     this.state.list.map((el) => {
                         return (
-                            <div className="sprite-item" key={el}>
+                            <div className={styles['sprite-item']} key={el}>
                                 {el}
                             </div>
                         );
