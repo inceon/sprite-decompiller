@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import ImageComponent from './Components/image-component/image-component';
-import SpritesListComponent from './Components/sprites-list-component/sprites-list-component';
+import ImageComponent from '../components/image-component/image-component';
+import SpritesListComponent from '../components/sprites-list-component/sprites-list-component';
 
 class App extends Component {
     render() {
