@@ -1,0 +1,6 @@
+#image-component {
+    grid-column: 1 / 5;
+    grid-row: 1;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}

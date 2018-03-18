@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Dropzone from 'react-dropzone'
 import './image-component.css';
 
-class ImageComponent extends Component {
+export default class ImageComponent extends Component {
     constructor() {
         super();
         this.state = {files: []}
@@ -22,11 +22,11 @@ class ImageComponent extends Component {
 
     render() {
         return (
-            <Dropzone onDrop={this.onDrop.bind(this)}>
-                <p>Try dropping some files here, or click to select files to upload.</p>
-            </Dropzone>
+            <div id="image-component">
+                <Dropzone onDrop={this.onDrop.bind(this)}>
+                    <p>Try dropping some files here, or click to select files to upload.</p>
+                </Dropzone>
+            </div>
         );
     }
 }
-
-export default ImageComponent;
