@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './sprites-list-component.css';
+import './sprites-list-component.scss';
 
 export default class SpritesListComponent extends Component {
     state = {

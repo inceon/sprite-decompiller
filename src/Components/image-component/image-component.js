@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone'
-import './image-component.css';
+import './image-component.scss';
 
 export default class ImageComponent extends Component {
     constructor() {
