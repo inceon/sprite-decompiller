@@ -7,11 +7,20 @@
     box-sizing: border-box;
     margin: 5px;
     padding: 5px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    user-select: none;
+
+    & > div {
+        margin: 5px 0;
+        &:first-of-type {
+            margin: 0;
+        }
+    }
 
     .sprite-item {
         $bg-color: #b0ceff;
         background: $bg-color;
-        margin: 5px 0;
         padding: 5px;
         border-radius: 5px;
         border: 1px solid darken($bg-color, 5%);
@@ -21,8 +30,29 @@
             background-color: darken($bg-color, 10%);
             color: desaturate(darken($bg-color, 70%), 85%);
         }
-        &:first-of-type {
-            margin: 0;
+    }
+    .additional-info {
+        .name {
+            font-weight: 700;
         }
+        animation: openAdditionalInfo 0.5s ease;
+        background: #fff;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 0 0 5px 5px;
+        color: #555;
+        overflow-y: hidden;
+        font-size: 0.9em;
+    }
+}
+
+@keyframes openAdditionalInfo {
+    0% {
+        opacity: 0.6;
+        max-height: 0
+    }
+    100% {
+        opacity: 1;
+        max-height: 300px
     }
 }
