@@ -3,5 +3,5 @@ body {
     padding: 0;
     height: 100%;
     font-family: sans-serif;
-    background: rgba(0, 11, 255, 0.08);
+    background: adjust_hue(saturate(lighten(blue, 45), 45), 360)
 }
