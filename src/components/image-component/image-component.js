@@ -22,7 +22,10 @@ export default class ImageComponent extends Component {
         return (
             <div id={styles['image-component']}>
                 {!this.state.readedFile && (
-                    <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
+                    <Dropzone className={styles['drop-zone']}
+                              onDrop={this.onDrop.bind(this)}
+                              accept=".jpeg,.png,.jpg,.bmp">
+
                         <p className={styles['drop-zone-text']}>Drop or click for select image file here.</p>
                     </Dropzone>
                 )}
