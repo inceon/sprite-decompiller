@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styles from './sprites-list-component.scss';
-import spriteList from '../../../static/fire.json';
 import Dropzone from "react-dropzone";
 
 export default class SpritesListComponent extends Component {
@@ -9,7 +8,7 @@ export default class SpritesListComponent extends Component {
         readedFile: null
     };
 
-    componentWillMount() {
+    getSpriteArray(spriteList = []) {
         let list = [];
         for (let spriteName in spriteList.frames) {
             list.push({
@@ -18,14 +17,32 @@ export default class SpritesListComponent extends Component {
             });
         }
 
-        this.setState({list});
+        return list;
+    }
+
+    sortSpriteArrayByName(list = []) {
+        let sortedList = list.sort((a, b) => {
+            if (a.name > b.name) {
+                return 1;
+            }
+            if (a.name < b.name) {
+                return -1;
+            }
+            return 0;
+        });
+
+        return sortedList;
     }
 
     onDrop(files) {
         let reader = new FileReader();
         reader.onload = () => {
+            let spriteList = JSON.parse(reader.result);
+            let list = this.sortSpriteArrayByName(this.getSpriteArray(spriteList));
+
             this.setState({
-                readedFile: reader.result
+                readedFile: spriteList,
+                list
             });
         };
         reader.readAsText(files[0]);
@@ -72,9 +89,11 @@ export default class SpritesListComponent extends Component {
     render() {
         return (
             <div id={styles['sprites-list-component']}>
-                <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
-                    <p className={styles['drop-zone-text']}>Drop json here.</p>
-                </Dropzone>
+                {!this.state.readedFile && (
+                    <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
+                        <p className={styles['drop-zone-text']}>Drop or click for select JSON here.</p>
+                    </Dropzone>
+                )}
                 {this.state.readedFile &&
                     this.state.list.map((el, idx) => {
                         return (
