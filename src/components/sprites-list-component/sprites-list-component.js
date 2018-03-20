@@ -46,10 +46,6 @@ export default class SpritesListComponent extends Component {
             });
         };
         reader.readAsText(files[0]);
-
-        this.setState({
-            files
-        });
     }
 
     parseObject(el, indent) {
