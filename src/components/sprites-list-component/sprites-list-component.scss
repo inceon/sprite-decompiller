@@ -19,16 +19,19 @@
     }
 
     .sprite-item {
-        $bg-color: #b0ceff;
+        $bg-color: #e0f7fa;
         background: $bg-color;
         padding: 5px;
-        border-radius: 5px;
-        border: 1px solid darken($bg-color, 5%);
-        color: desaturate(darken($bg-color, 50%), 85%);
+        border-radius: 10px 0;
+        border: 1.5px solid darken($bg-color, 25%);
+        color: darken($bg-color, 55%);
+        font-weight: 600;
+        font-family: system-ui, serif;
         cursor: pointer;
-        &:hover {
-            background-color: darken($bg-color, 10%);
-            color: desaturate(darken($bg-color, 70%), 85%);
+        &:hover,
+        &.selected {
+            background-color: darken($bg-color, 13%);
+            color: darken($bg-color, 65%);
         }
     }
     .additional-info {

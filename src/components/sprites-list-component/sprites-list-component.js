@@ -58,7 +58,8 @@ export default class SpritesListComponent extends Component {
                     this.state.list.map((el, idx) => {
                         return (
                             <div key={idx}>
-                                <div className={styles['sprite-item']} onClick={this.openAdditionalInfo.bind(this, el)}>
+                                <div className={styles['sprite-item'] + ' ' + (el.showInfo ? styles.selected : null)}
+                                     onClick={this.openAdditionalInfo.bind(this, el)}>
                                     {el.name}
                                 </div>
                                 {el.showInfo && (
