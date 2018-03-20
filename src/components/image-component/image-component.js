@@ -12,6 +12,9 @@ export default class ImageComponent extends Component {
         var reader = new FileReader();
         reader.onload = (res) => {
             console.log(reader.result);
+            this.setState({
+                readedFile: reader.result
+            });
         };
         reader.readAsText(files[0]);
 
@@ -23,9 +26,13 @@ export default class ImageComponent extends Component {
     render() {
         return (
             <div id={styles['image-component']}>
-                <Dropzone onDrop={this.onDrop.bind(this)}>
-                    <p>Try dropping some files here, or click to select files to upload.</p>
+                <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
+                    <p className={styles['drop-zone-text']}>Drop or click for select image file here.</p>
                 </Dropzone>
+
+                <p>
+                    {this.state.readedFile}
+                </p>
             </div>
         );
     }
