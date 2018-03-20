@@ -1,3 +1,5 @@
+$bg-color: #e0f7fa;
+
 #sprites-list-component {
     grid-column: 5;
     grid-row: 1;
@@ -18,8 +20,23 @@
         }
     }
 
+    .drop-zone {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 2px dashed darken($bg-color, 25%);
+        .drop-zone-text {
+            color: darken($bg-color, 55%);
+            font-weight: 600;
+            padding: 5px;
+        }
+    }
+
     .sprite-item {
-        $bg-color: #e0f7fa;
         background: $bg-color;
         padding: 5px;
         border-radius: 10px 0;

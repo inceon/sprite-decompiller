@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import styles from './sprites-list-component.scss';
 import spriteList from '../../../static/fire.json';
+import Dropzone from "react-dropzone";
 
 export default class SpritesListComponent extends Component {
     state = {
-        list: []
+        list: [],
+        readedFile: null
     };
 
     componentWillMount() {
@@ -19,10 +21,26 @@ export default class SpritesListComponent extends Component {
         this.setState({list});
     }
 
+    onDrop(files) {
+        let reader = new FileReader();
+        reader.onload = () => {
+            this.setState({
+                readedFile: reader.result
+            });
+        };
+        reader.readAsText(files[0]);
+
+        this.setState({
+            files
+        });
+    }
+
     parseObject(el, indent) {
         let info = [];
         for (let key in el) {
-            if (key === 'showInfo') continue;
+            if (key === 'showInfo') {
+                continue;
+            }
             if (typeof el[key] === 'object') {
                 info.push(
                     <div className={styles.object}>
@@ -54,7 +72,10 @@ export default class SpritesListComponent extends Component {
     render() {
         return (
             <div id={styles['sprites-list-component']}>
-                {
+                <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
+                    <p className={styles['drop-zone-text']}>Drop json here.</p>
+                </Dropzone>
+                {this.state.readedFile &&
                     this.state.list.map((el, idx) => {
                         return (
                             <div key={idx}>
