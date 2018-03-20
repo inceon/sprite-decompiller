@@ -10,6 +10,8 @@ $bg-color: #e0f7fa;
     margin: 5px;
     padding: 5px;
 
+    overflow: scroll;
+
     .drop-zone {
         display: flex;
         justify-content: center;
@@ -24,5 +26,9 @@ $bg-color: #e0f7fa;
             font-weight: 600;
             padding: 5px;
         }
+    }
+
+    .image {
+        width: 100%
     }
 }

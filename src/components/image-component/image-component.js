@@ -10,29 +10,25 @@ export default class ImageComponent extends Component {
 
     onDrop(files) {
         var reader = new FileReader();
-        reader.onload = (res) => {
-            console.log(reader.result);
+        reader.onload = () => {
             this.setState({
                 readedFile: reader.result
             });
         };
-        reader.readAsText(files[0]);
-
-        this.setState({
-            files
-        });
+        reader.readAsDataURL(files[0]);
     }
 
     render() {
         return (
             <div id={styles['image-component']}>
-                <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
-                    <p className={styles['drop-zone-text']}>Drop or click for select image file here.</p>
-                </Dropzone>
-
-                <p>
-                    {this.state.readedFile}
-                </p>
+                {!this.state.readedFile && (
+                    <Dropzone className={styles['drop-zone']} onDrop={this.onDrop.bind(this)}>
+                        <p className={styles['drop-zone-text']}>Drop or click for select image file here.</p>
+                    </Dropzone>
+                )}
+                {this.state.readedFile && (
+                    <img className={styles.image} src={this.state.readedFile} alt="Red dot"/>
+                )}
             </div>
         );
     }
