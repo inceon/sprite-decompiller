@@ -29,12 +29,9 @@ export default class ImageComponent extends Component {
 
                 let widthScale = canvas.width / image.width;
                 let heightScale = canvas.height / image.height;
+                let scale = Math.min(widthScale, heightScale);
 
-                if (widthScale < heightScale) {
-                    ctx.drawImage(image, 0, 0, canvas.width, image.height * widthScale);
-                } else {
-                    ctx.drawImage(image, 0, 0, image.width * heightScale, canvas.height);
-                }
+                ctx.drawImage(image, 0, 0, image.width * scale, image.height * scale);
 
             };
             image.src = this.state.readedFile;
