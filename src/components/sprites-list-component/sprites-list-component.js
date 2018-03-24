@@ -92,16 +92,18 @@ export default class SpritesListComponent extends Component {
         this.setState(this.state);
     }
 
+    componentDidMount() {
+        console.error(styles);
+    }
+
     render() {
         return (
             <div id={styles['sprites-list-component']}>
-                {!this.state.readedFile && (
-                    <Dropzone className={styles['drop-zone']}
-                              onDrop={this.onDrop.bind(this)}
-                              accept=".json">
-                        <p className={styles['drop-zone-text']}>Drop or click for select JSON here.</p>
-                    </Dropzone>
-                )}
+                <Dropzone className={this.state.readedFile ? styles['drop-zone-completed'] : styles['drop-zone-empty']}
+                          onDrop={this.onDrop.bind(this)}
+                          accept=".json">
+                    <p className={styles['drop-zone-text']}></p>
+                </Dropzone>
                 {this.state.readedFile &&
                     this.state.list.map((el, idx) => {
                         return (

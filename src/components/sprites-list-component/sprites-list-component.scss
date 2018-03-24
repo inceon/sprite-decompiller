@@ -26,9 +26,26 @@ $bg-color: #e0f7fa;
         flex-direction: column;
         text-align: center;
         width: 100%;
-        height: 100%;
         box-sizing: border-box;
         border: 2px dashed darken($bg-color, 45%);
+        &-empty {
+            @extend .drop-zone;
+            height: 100%;
+
+            .drop-zone-text {
+                &:after {
+                    content: 'Drop or click for select JSON here.';
+                }
+            }
+        }
+        &-completed {
+            @extend .drop-zone;
+            .drop-zone-text {
+                &:after {
+                    content: 'Update JSON file.';
+                }
+            }
+        }
         .drop-zone-text {
             color: darken($bg-color, 55%);
             font-weight: 600;
