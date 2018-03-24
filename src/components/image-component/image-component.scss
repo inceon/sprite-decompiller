@@ -9,8 +9,8 @@ $bg-color: #e0f7fa;
     box-sizing: border-box;
     margin: 5px;
     padding: 5px;
-
-    overflow: scroll;
+    max-height: 100vh;
+    overflow: hidden;
 
     .drop-zone {
         display: flex;
@@ -21,6 +21,7 @@ $bg-color: #e0f7fa;
         height: 100%;
         box-sizing: border-box;
         border: 2px dashed darken($bg-color, 45%);
+        margin: 0;
         .drop-zone-text {
             color: darken($bg-color, 55%);
             font-weight: 600;
