@@ -92,10 +92,6 @@ export default class SpritesListComponent extends Component {
         this.setState(this.state);
     }
 
-    componentDidMount() {
-        console.error(styles);
-    }
-
     render() {
         return (
             <div id={styles['sprites-list-component']}>

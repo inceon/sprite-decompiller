@@ -14,7 +14,8 @@ export class AppModel {
     set image(value) {
         // Check if its image
         if (atob(value.split(';')[1].split(',')[1])) {
-            this._image = value;
+            this._image = new Image();
+            this._image.src = value;
         } else {
             console.error(`Error, it's not an image`);
         }

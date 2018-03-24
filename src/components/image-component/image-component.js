@@ -9,7 +9,7 @@ export default class ImageComponent extends Component {
     constructor() {
         super();
         this.state = {
-            files: []
+            readedFile: null
         };
 
         this.model = AppModel.getInstance();

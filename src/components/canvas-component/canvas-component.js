@@ -16,22 +16,9 @@ export default class CanvasComponent extends Component {
             canvas.height = this.props.parent.offsetHeight;
             const ctx = canvas.getContext('2d');
             this.model.canvas = ctx;
-            this.ctx = ctx;
+
             this.trackTransforms(ctx);
-
-            this.image = new Image();
-            this.image.src = this.model.image;
-            this.image.onload = () => {
-
-                let widthScale = canvas.width / this.image.width;
-                let heightScale = canvas.height / this.image.height;
-                let scale = Math.min(widthScale, heightScale);
-                this.model.scale = scale;
-
-                ctx.scale(scale, scale);
-                this.redraw();
-
-            };
+            this.setListenerForLoadImage();
 
             let lastX = canvas.width / 2, lastY = canvas.height / 2;
 
@@ -83,17 +70,28 @@ export default class CanvasComponent extends Component {
         }
     }
 
+    componentDidUpdate() {
+        this.setListenerForLoadImage();
+    }
+
+    setListenerForLoadImage() {
+        this.model.image.onload = () => {
+            this.redraw();
+        };
+    }
+
     redraw() {
-        let p1 = this.ctx.transformedPoint(0, 0);
-        let p2 = this.ctx.transformedPoint(this.refs.canvas.width, this.refs.canvas.height);
-        this.ctx.clearRect(p1.x, p1.y, p2.x - p1.x, p2.y - p1.y);
+        let ctx = this.model.canvas;
+        let p1 = ctx.transformedPoint(0, 0);
+        let p2 = ctx.transformedPoint(this.refs.canvas.width, this.refs.canvas.height);
+        ctx.clearRect(p1.x, p1.y, p2.x - p1.x, p2.y - p1.y);
 
-        this.ctx.save();
-        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-        this.ctx.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
-        this.ctx.restore();
+        ctx.save();
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, this.refs.canvas.width, this.refs.canvas.height);
+        ctx.restore();
 
-        this.ctx.drawImage(this.image, 0, 0);
+        ctx.drawImage(this.model.image, 0, 0);
         if (this.model.spritesList) {
             for (let sprite of this.model.spritesList) {
                 this.drawSpriteRectangle(sprite)
@@ -172,14 +170,15 @@ export default class CanvasComponent extends Component {
     }
 
     drawSpriteRectangle(spriteInfo) {
-        this.ctx.beginPath();
-        this.ctx.lineWidth = "1";
-        this.ctx.strokeStyle = "red";
-        this.ctx.rect(
+        let ctx = this.model.canvas;
+        ctx.beginPath();
+        ctx.lineWidth = "1";
+        ctx.strokeStyle = "red";
+        ctx.rect(
             spriteInfo.frame.x, spriteInfo.frame.y,
             spriteInfo.frame.w, spriteInfo.frame.h
         );
-        this.ctx.stroke();
+        ctx.stroke();
     }
 
     render() {
