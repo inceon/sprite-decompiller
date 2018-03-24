@@ -1,15 +1,23 @@
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone'
 import styles from './image-component.scss';
+import {AppModel} from "../../model";
 
 export default class ImageComponent extends Component {
-    state = {
-        files: []
-    };
+
+    constructor() {
+        super();
+        this.state = {
+            files: []
+        };
+
+        this.model = AppModel.getInstance();
+    }
 
     onDrop(files) {
         var reader = new FileReader();
         reader.onload = () => {
+            this.model.image = reader.result;
             this.setState({
                 readedFile: reader.result
             });
@@ -23,18 +31,20 @@ export default class ImageComponent extends Component {
             canvas.width = this.refs[styles['image-component']].offsetWidth;
             canvas.height = this.refs[styles['image-component']].offsetHeight;
             const ctx = canvas.getContext('2d');
+            this.model.canvas = ctx;
 
             let image = new Image();
-            image.onload = function () {
+            image.src = this.model.image;
+            image.onload = () => {
 
                 let widthScale = canvas.width / image.width;
                 let heightScale = canvas.height / image.height;
                 let scale = Math.min(widthScale, heightScale);
+                this.model.scale = scale;
 
                 ctx.drawImage(image, 0, 0, image.width * scale, image.height * scale);
 
             };
-            image.src = this.state.readedFile;
         }
     }
 

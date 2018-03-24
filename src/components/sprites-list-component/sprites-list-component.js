@@ -1,23 +1,36 @@
 import React, {Component} from 'react';
 import styles from './sprites-list-component.scss';
 import Dropzone from "react-dropzone";
+import {AppController} from '../../controller';
 
 export default class SpritesListComponent extends Component {
-    state = {
-        list: [],
-        readedFile: null
-    };
+
+    constructor() {
+        super();
+        this.state = {
+            list: [],
+            readedFile: null
+        };
+        this.controller = AppController.getInstance();
+    }
 
     getSpriteArray(spriteList = []) {
         let list = [];
         for (let spriteName in spriteList.frames) {
-            list.push({
+            let spriteInfo = {
                 name: spriteName,
                 ...spriteList.frames[spriteName]
-            });
+            };
+
+            list.push(spriteInfo);
+            this.drawSpriteRectangle(spriteInfo);
         }
 
         return list;
+    }
+
+    drawSpriteRectangle(spriteInfo) {
+        this.controller.drawRectOnCanvas(spriteInfo.frame);
     }
 
     sortSpriteArrayByName(list = []) {

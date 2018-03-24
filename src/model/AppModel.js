@@ -1,5 +1,8 @@
 export class AppModel {
     _instance: null;
+    _image: null;
+    canvas: null;
+    scale: null;
 
     static getInstance() {
         if (!this._instance) {
@@ -9,9 +12,15 @@ export class AppModel {
     }
 
     set image(value) {
-        if (btoa(atob(value)) == value) {
+        // Check if its image
+        if (atob(value.split(';')[1].split(',')[1])) {
             this._image = value;
-            console.log('set tes');
+        } else {
+            console.error(`Error, it's not an image`);
         }
+    }
+
+    get image() {
+        return this._image;
     }
 }
