@@ -29,14 +29,12 @@ export default class ImageComponent extends Component {
     render() {
         return (
             <div id={styles['image-component']} ref={styles['image-component']}>
-                {!this.state.readedFile && (
-                    <Dropzone className={styles['drop-zone']}
-                              onDrop={this.onDrop.bind(this)}
-                              accept=".jpeg,.png,.jpg,.bmp">
+                <Dropzone className={this.state.readedFile ? styles['drop-zone-completed'] : styles['drop-zone-empty']}
+                          onDrop={this.onDrop.bind(this)}
+                          accept=".jpeg,.png,.jpg,.bmp">
 
-                        <p className={styles['drop-zone-text']}>Drop or click for select image file here.</p>
-                    </Dropzone>
-                )}
+                    <p className={styles['drop-zone-text']}/>
+                </Dropzone>
                 {this.state.readedFile && (
                     <CanvasComponent parent={this.refs[styles['image-component']]}/>
                 )}
