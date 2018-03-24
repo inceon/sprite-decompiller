@@ -34,12 +34,10 @@ $bg-color: #e0f7fa;
         &-completed {
             @extend .drop-zone;
             position: absolute;
-            background: #fff;
-            width: 40px;
             height: 40px;
             .drop-zone-text {
-                &:after {
-                    content: '🔄';
+                &:before {
+                    content: '🔄 ';
                 }
             }
         }

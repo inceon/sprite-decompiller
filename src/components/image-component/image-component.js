@@ -9,7 +9,8 @@ export default class ImageComponent extends Component {
     constructor() {
         super();
         this.state = {
-            readedFile: null
+            readedFile: null,
+            imageName: null
         };
 
         this.model = AppModel.getInstance();
@@ -20,7 +21,8 @@ export default class ImageComponent extends Component {
         reader.onload = () => {
             this.model.image = reader.result;
             this.setState({
-                readedFile: reader.result
+                readedFile: reader.result,
+                imageName: files[0].name
             });
         };
         reader.readAsDataURL(files[0]);
@@ -33,7 +35,7 @@ export default class ImageComponent extends Component {
                           onDrop={this.onDrop.bind(this)}
                           accept=".jpeg,.png,.jpg,.bmp">
 
-                    <p className={styles['drop-zone-text']}/>
+                    <p className={styles['drop-zone-text']}>{this.state.imageName}</p>
                 </Dropzone>
                 {this.state.readedFile && (
                     <CanvasComponent parent={this.refs[styles['image-component']]}/>
