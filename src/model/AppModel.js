@@ -2,7 +2,7 @@ export class AppModel {
     _instance: null;
     _image: null;
     canvas: null;
-    scale: null;
+    spritesList: null;
 
     static getInstance() {
         if (!this._instance) {

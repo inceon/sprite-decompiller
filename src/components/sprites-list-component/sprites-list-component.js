@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styles from './sprites-list-component.scss';
 import Dropzone from "react-dropzone";
-import {AppController} from '../../controller';
+import {AppModel} from '../../model';
 
 export default class SpritesListComponent extends Component {
 
@@ -11,7 +11,7 @@ export default class SpritesListComponent extends Component {
             list: [],
             readedFile: null
         };
-        this.controller = AppController.getInstance();
+        this._model = AppModel.getInstance();
     }
 
     getSpriteArray(spriteList = []) {
@@ -23,14 +23,11 @@ export default class SpritesListComponent extends Component {
             };
 
             list.push(spriteInfo);
-            this.drawSpriteRectangle(spriteInfo);
         }
 
-        return list;
-    }
+        this._model.spritesList = list;
 
-    drawSpriteRectangle(spriteInfo) {
-        this.controller.drawRectOnCanvas(spriteInfo.frame);
+        return list;
     }
 
     sortSpriteArrayByName(list = []) {
