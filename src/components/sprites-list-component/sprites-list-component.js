@@ -90,6 +90,7 @@ export default class SpritesListComponent extends Component {
     openAdditionalInfo(el) {
         el.showInfo = !el.showInfo;
         this.setState(this.state);
+        this.props.updateImage();
     }
 
     render() {

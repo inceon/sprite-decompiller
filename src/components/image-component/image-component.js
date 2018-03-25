@@ -27,7 +27,6 @@ export default class ImageComponent extends Component {
         };
         reader.readAsDataURL(files[0]);
     }
-
     render() {
         return (
             <div id={styles['image-component']} ref={styles['image-component']}>

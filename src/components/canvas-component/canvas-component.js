@@ -75,7 +75,8 @@ export default class CanvasComponent extends Component {
     }
 
     setListenerForLoadImage() {
-        this.model.image.onload = () => {
+        this.redraw();
+        this.model.image.onload = (evt) => {
             this.redraw();
         };
     }
@@ -97,6 +98,23 @@ export default class CanvasComponent extends Component {
                 this.drawSpriteRectangle(sprite)
             }
         }
+    }
+
+    drawSpriteRectangle(spriteInfo) {
+        let ctx = this.model.canvas;
+        ctx.beginPath();
+        if (spriteInfo.showInfo) {
+            ctx.lineWidth = "2";
+            ctx.strokeStyle = "red";
+        } else {
+            ctx.lineWidth = "1";
+            ctx.strokeStyle = "blue";
+        }
+        ctx.rect(
+            spriteInfo.frame.x, spriteInfo.frame.y,
+            spriteInfo.frame.w, spriteInfo.frame.h
+        );
+        ctx.stroke();
     }
 
     trackTransforms(ctx) {
@@ -167,18 +185,6 @@ export default class CanvasComponent extends Component {
             pt.y = y;
             return pt.matrixTransform(xform.inverse());
         }
-    }
-
-    drawSpriteRectangle(spriteInfo) {
-        let ctx = this.model.canvas;
-        ctx.beginPath();
-        ctx.lineWidth = "1";
-        ctx.strokeStyle = "red";
-        ctx.rect(
-            spriteInfo.frame.x, spriteInfo.frame.y,
-            spriteInfo.frame.w, spriteInfo.frame.h
-        );
-        ctx.stroke();
     }
 
     render() {
