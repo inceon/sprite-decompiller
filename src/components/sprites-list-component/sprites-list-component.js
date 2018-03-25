@@ -54,6 +54,8 @@ export default class SpritesListComponent extends Component {
                 readedFile: spriteList,
                 list
             });
+
+            this.props.updateImage();
         };
         reader.readAsText(files[0]);
     }

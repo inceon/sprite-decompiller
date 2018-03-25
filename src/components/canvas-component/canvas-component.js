@@ -104,11 +104,11 @@ export default class CanvasComponent extends Component {
         let ctx = this.model.canvas;
         ctx.beginPath();
         if (spriteInfo.showInfo) {
-            ctx.lineWidth = "2";
+            ctx.lineWidth = "3";
             ctx.strokeStyle = "red";
         } else {
             ctx.lineWidth = "1";
-            ctx.strokeStyle = "blue";
+            ctx.strokeStyle = "#ccc";
         }
         ctx.rect(
             spriteInfo.frame.x, spriteInfo.frame.y,
