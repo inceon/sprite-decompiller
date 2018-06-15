@@ -5,12 +5,12 @@ import SpritesListComponent from '../components/sprites-list-component/sprites-l
 
 class App extends Component {
     rerenderImage() {
-        this.image.forceUpdate();
+        this.imageComponent.forceUpdate();
     }
     render() {
         return (
             <div className={styles.App}>
-                <ImageComponent ref={image => this.image = image}/>
+                <ImageComponent ref={imageComponent => this.imageComponent = imageComponent}/>
                 <SpritesListComponent updateImage={this.rerenderImage.bind(this)}/>
             </div>
         );

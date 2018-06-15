@@ -9,6 +9,17 @@ export default class CanvasComponent extends Component {
         this.model = AppModel.getInstance();
     }
 
+    getMousePos(canvas, evt) {
+        let rect = canvas.getBoundingClientRect(), // abs. size of element
+            scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
+            scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+        return {
+            x: (evt.clientX - rect.left) * scaleX,   // scale mouse coordinates after they have
+            y: (evt.clientY - rect.top) * scaleY     // been adjusted to be relative to element
+        }
+    }
+
     componentDidMount() {
         if (this.refs.canvas) {
             const canvas = this.refs.canvas;
@@ -41,11 +52,16 @@ export default class CanvasComponent extends Component {
                     ctx.translate(pt.x - dragStart.x, pt.y - dragStart.y);
                     this.redraw();
                 }
+
+                let mousePos = this.getMousePos(canvas, evt);
+                let mousPosOnSprite = ctx.transformedPoint(mousePos.x, mousePos.y);
             }, false);
 
             canvas.addEventListener('mouseup', (evt) => {
                 dragStart = null;
-                if (!dragged) zoom(evt.shiftKey ? -1 : 1);
+                if (!dragged) {
+                    zoom(evt.shiftKey ? -1 : 1);
+                }
             }, false);
 
             let scaleFactor = 1.1;
