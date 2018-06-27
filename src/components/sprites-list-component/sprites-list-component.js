@@ -25,8 +25,6 @@ export default class SpritesListComponent extends Component {
             list.push(spriteInfo);
         }
 
-        this._model.spritesList = list;
-
         return list;
     }
 
@@ -49,6 +47,8 @@ export default class SpritesListComponent extends Component {
         reader.onload = () => {
             let spriteList = JSON.parse(reader.result);
             let list = this.sortSpriteArrayByName(this.getSpriteArray(spriteList));
+
+            this._model.spritesList = list;
 
             this.setState({
                 readedFile: spriteList,
@@ -104,7 +104,7 @@ export default class SpritesListComponent extends Component {
                     <p className={styles['drop-zone-text']}/>
                 </Dropzone>
                 {this.state.readedFile &&
-                    this.state.list.map((el, idx) => {
+                this._model.spritesList.map((el, idx) => {
                         return (
                             <div key={idx}>
                                 <div className={styles['sprite-item'] + ' ' + (el.showInfo ? styles.selected : null)}

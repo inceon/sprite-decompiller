@@ -37,7 +37,8 @@ export default class ImageComponent extends Component {
                     <p className={styles['drop-zone-text']}>{this.state.imageName}</p>
                 </Dropzone>
                 {this.state.readedFile && (
-                    <CanvasComponent parent={this.refs[styles['image-component']]}/>
+                    <CanvasComponent updateSpriteList={this.props.updateSpriteList}
+                                     parent={this.refs[styles['image-component']]}/>
                 )}
             </div>
         );

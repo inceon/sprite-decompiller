@@ -41,6 +41,7 @@ export default class CanvasComponent extends Component {
                 lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
                 dragStart = ctx.transformedPoint(lastX, lastY);
                 dragged = false;
+
             }, false);
 
             canvas.addEventListener('mousemove', (evt) => {
@@ -52,15 +53,15 @@ export default class CanvasComponent extends Component {
                     ctx.translate(pt.x - dragStart.x, pt.y - dragStart.y);
                     this.redraw();
                 }
-
-                let mousePos = this.getMousePos(canvas, evt);
-                let mousPosOnSprite = ctx.transformedPoint(mousePos.x, mousePos.y);
             }, false);
 
             canvas.addEventListener('mouseup', (evt) => {
                 dragStart = null;
                 if (!dragged) {
-                    zoom(evt.shiftKey ? -1 : 1);
+                    let mousePos = this.getMousePos(canvas, evt);
+                    let mousPosOnSprite = ctx.transformedPoint(mousePos.x, mousePos.y);
+
+                    this.props.updateSpriteList(mousPosOnSprite);
                 }
             }, false);
 
