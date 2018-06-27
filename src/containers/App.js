@@ -16,14 +16,16 @@ class App extends Component {
 
     updateSpriteList(coord) {
         this._model = AppModel.getInstance();
-        for (let item of this._model.spritesList) {
-            if (this.pointInSquare(coord, item['frame'])) {
-                item.showInfo = !item.showInfo;
+        if (this._model.spritesList) {
+            for (let item of this._model.spritesList) {
+                if (this.pointInSquare(coord, item['frame'])) {
+                    item.showInfo = !item.showInfo;
+                }
             }
-        }
 
-        this.spriteListComponent.forceUpdate();
-        this.rerenderImage();
+            this.spriteListComponent.forceUpdate();
+            this.rerenderImage();
+        }
     }
 
     render() {
