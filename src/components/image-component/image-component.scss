@@ -12,6 +12,19 @@ $bg-color: #e0f7fa;
     max-height: 100vh;
     overflow: hidden;
 
+    .bg-changer {
+        position: absolute;
+        right: calc(100vw / 4.8);
+        display: block;
+        width: 25px;
+        height: 25px;
+        background: #fff url(/Graph-paper.svg);
+        background-size: cover;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+
     .drop-zone {
         display: flex;
         justify-content: center;

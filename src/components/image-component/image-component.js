@@ -10,7 +10,9 @@ export default class ImageComponent extends Component {
         super();
         this.state = {
             readedFile: null,
-            imageName: null
+            imageName: null,
+            colorChanger: false,
+            imageComponentStyle: {}
         };
 
         this.model = AppModel.getInstance();
@@ -22,14 +24,29 @@ export default class ImageComponent extends Component {
             this.model.image = reader.result;
             this.setState({
                 readedFile: reader.result,
-                imageName: files[0].name
+                imageName: files[0].name,
+                colorChanger: true
             });
         };
         reader.readAsDataURL(files[0]);
     }
+
+    changeBackground() {
+        let bg = {};
+        if (Object.keys(this.state.imageComponentStyle).length === 0) {
+            bg = {
+                background: 'url(Graph-paper.svg)',
+                backgroundSize: '10%'
+            };
+        }
+        this.setState({imageComponentStyle: bg});
+    }
+
     render() {
         return (
-            <div id={styles['image-component']} ref={styles['image-component']}>
+            <div id={styles['image-component']} ref={styles['image-component']} style={this.state.imageComponentStyle}>
+                {this.state.colorChanger &&
+                <div className={styles['bg-changer']} onClick={this.changeBackground.bind(this)}/>}
                 <Dropzone className={this.state.readedFile ? styles['drop-zone-completed'] : styles['drop-zone-empty']}
                           onDrop={this.onDrop.bind(this)}
                           accept=".jpeg,.png,.jpg,.bmp">
