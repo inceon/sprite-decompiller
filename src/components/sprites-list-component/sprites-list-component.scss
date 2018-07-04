@@ -19,6 +19,13 @@ $bg-color: #e0f7fa;
         }
     }
 
+    .github-buttons {
+        text-align: right;
+        display: flex;
+        justify-content: center;
+
+    }
+
     .drop-zone {
         display: flex;
         justify-content: center;
@@ -29,7 +36,7 @@ $bg-color: #e0f7fa;
         border: 2px dashed darken($bg-color, 45%);
         &-empty {
             @extend .drop-zone;
-            height: 100%;
+            height: 95%;
 
             .drop-zone-text {
                 &:after {
