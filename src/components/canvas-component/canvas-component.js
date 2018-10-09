@@ -36,7 +36,6 @@ export default class CanvasComponent extends Component {
             let dragStart, dragged;
 
             canvas.addEventListener('mousedown', (evt) => {
-                document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
                 lastX = evt.offsetX || (evt.pageX - canvas.offsetLeft);
                 lastY = evt.offsetY || (evt.pageY - canvas.offsetTop);
                 dragStart = ctx.transformedPoint(lastX, lastY);
