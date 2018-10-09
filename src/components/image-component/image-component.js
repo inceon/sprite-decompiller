@@ -14,8 +14,6 @@ export default class ImageComponent extends Component {
             colorChanger: false,
             imageComponentStyle: {}
         };
-
-        this.canvasComponent = React.createRef();
         this.model = AppModel.getInstance();
     }
 
@@ -44,7 +42,7 @@ export default class ImageComponent extends Component {
     }
 
     resetScale() {
-        this.canvasComponent.current.reset();
+        this.canvasComponent.reset();
     }
 
     render() {
@@ -64,7 +62,7 @@ export default class ImageComponent extends Component {
                 {this.state.readedFile && (
                     <CanvasComponent updateSpriteList={this.props.updateSpriteList}
                                      parent={this.refs[styles['image-component']]}
-                                     ref={this.canvasComponent}/>
+                                     ref={component => this.canvasComponent = component}/>
                 )}
             </div>
         );
