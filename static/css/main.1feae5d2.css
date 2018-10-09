@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+  background: #e6e6ff; }
+.App__App__1TtA9 {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr; }
+@charset "UTF-8";
+#image-component__image-component__3biel {
+  grid-column: 1 / 5;
+  grid-row: 1;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
+  max-height: 100vh;
+  overflow: hidden; }
+  #image-component__image-component__3biel .image-component__changers__3Mbtl {
+    position: absolute;
+    right: calc(100vw / 4.8);
+    display: block; }
+    #image-component__image-component__3biel .image-component__changers__3Mbtl .image-component__bg-changer__37t__ {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background: #fff url(/Graph-paper.svg);
+      background-size: cover;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      margin-right: 5px; }
+    #image-component__image-component__3biel .image-component__changers__3Mbtl .image-component__zoom-reset__13Ukd {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      background: #fff url(/fullscreen.svg);
+      background-size: cover;
+      opacity: 0.4;
+      cursor: pointer; }
+  #image-component__image-component__3biel .image-component__drop-zone__4IXDg, #image-component__image-component__3biel .image-component__drop-zone-empty__3j_FI, #image-component__image-component__3biel .image-component__drop-zone-completed__3lvBq {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px dashed #22bed3;
+    margin: 0; }
+    #image-component__image-component__3biel .image-component__drop-zone-empty__3j_FI {
+      height: 100%;
+      width: 100%; }
+      #image-component__image-component__3biel .image-component__drop-zone-empty__3j_FI .image-component__drop-zone-text__1nwK0:after {
+        content: 'Drop or click for select image file here.'; }
+    #image-component__image-component__3biel .image-component__drop-zone-completed__3lvBq {
+      position: absolute;
+      height: 40px; }
+      #image-component__image-component__3biel .image-component__drop-zone-completed__3lvBq .image-component__drop-zone-text__1nwK0:before {
+        content: '\1F504   '; }
+    #image-component__image-component__3biel .image-component__drop-zone__4IXDg .image-component__drop-zone-text__1nwK0, #image-component__image-component__3biel .image-component__drop-zone-empty__3j_FI .image-component__drop-zone-text__1nwK0, #image-component__image-component__3biel .image-component__drop-zone-completed__3lvBq .image-component__drop-zone-text__1nwK0 {
+      color: #1b97a7;
+      font-weight: 600;
+      padding: 5px; }
+  #image-component__image-component__3biel .image-component__image__2zAzr {
+    width: 100%; }
+.canvas-component__canvas__2hsus {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box; }
+#sprites-list-component__sprites-list-component__39Blz {
+  grid-column: 5;
+  grid-row: 1;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
+  max-height: 100vh;
+  overflow-y: scroll; }
+  #sprites-list-component__sprites-list-component__39Blz > div {
+    margin: 5px 0; }
+    #sprites-list-component__sprites-list-component__39Blz > div:first-of-type {
+      margin: 0; }
+  #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__github-buttons__1VB1G {
+    text-align: right;
+    display: flex;
+    justify-content: center; }
+  #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone__zXMRl, #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-empty__3qWEu, #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-completed__349GQ {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px dashed #22bed3; }
+    #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-empty__3qWEu {
+      height: 95%; }
+      #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-empty__3qWEu .sprites-list-component__drop-zone-text__kidt0:after {
+        content: 'Drop or click for select JSON here.'; }
+    #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-completed__349GQ .sprites-list-component__drop-zone-text__kidt0:after {
+      content: 'Update JSON file.'; }
+    #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone__zXMRl .sprites-list-component__drop-zone-text__kidt0, #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-empty__3qWEu .sprites-list-component__drop-zone-text__kidt0, #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__drop-zone-completed__349GQ .sprites-list-component__drop-zone-text__kidt0 {
+      color: #1b97a7;
+      font-weight: 600;
+      padding: 5px; }
+  #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__sprite-item__1jKIm {
+    background: #e0f7fa;
+    padding: 5px;
+    border-radius: 10px 0;
+    border: 1.5px solid #72dbe8;
+    color: #1b97a7;
+    font-weight: 600;
+    font-family: system-ui, serif;
+    cursor: pointer; }
+    #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__sprite-item__1jKIm:hover, #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__sprite-item__1jKIm.sprites-list-component__selected__39qI5 {
+      background-color: #a7e8f1;
+      color: #146f7b; }
+  #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__additional-info__3g3M1 {
+    animation: sprites-list-component__openAdditionalInfo__1_Nkj 0.5s ease;
+    background: #fff;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 0 0 5px 5px;
+    color: #555;
+    overflow-y: hidden;
+    font-size: 0.9em; }
+    #sprites-list-component__sprites-list-component__39Blz .sprites-list-component__additional-info__3g3M1 .sprites-list-component__name__3BvOP {
+      font-weight: 700; }
+
+@keyframes sprites-list-component__openAdditionalInfo__1_Nkj {
+  0% {
+    opacity: 0.6;
+    max-height: 0; }
+  100% {
+    opacity: 1;
+    max-height: 300px; } }
+
+/*# sourceMappingURL=main.1feae5d2.css.map*/
