@@ -15,6 +15,7 @@ export default class ImageComponent extends Component {
             imageComponentStyle: {}
         };
 
+        this.canvasComponent = React.createRef();
         this.model = AppModel.getInstance();
     }
 
@@ -42,11 +43,18 @@ export default class ImageComponent extends Component {
         this.setState({imageComponentStyle: bg});
     }
 
+    resetScale() {
+        this.canvasComponent.current.reset();
+    }
+
     render() {
         return (
             <div id={styles['image-component']} ref={styles['image-component']} style={this.state.imageComponentStyle}>
                 {this.state.colorChanger &&
-                <div className={styles['bg-changer']} onClick={this.changeBackground.bind(this)}/>}
+                <div className={styles['changers']}>
+                    <div className={styles['bg-changer']} onClick={this.changeBackground.bind(this)}/>
+                    <div className={styles['zoom-reset']} onClick={this.resetScale.bind(this)}/>
+                </div>}
                 <Dropzone className={this.state.readedFile ? styles['drop-zone-completed'] : styles['drop-zone-empty']}
                           onDrop={this.onDrop.bind(this)}
                           accept=".jpeg,.png,.jpg,.bmp">
@@ -55,7 +63,8 @@ export default class ImageComponent extends Component {
                 </Dropzone>
                 {this.state.readedFile && (
                     <CanvasComponent updateSpriteList={this.props.updateSpriteList}
-                                     parent={this.refs[styles['image-component']]}/>
+                                     parent={this.refs[styles['image-component']]}
+                                     ref={this.canvasComponent}/>
                 )}
             </div>
         );

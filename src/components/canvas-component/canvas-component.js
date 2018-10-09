@@ -116,6 +116,12 @@ export default class CanvasComponent extends Component {
         }
     }
 
+    reset() {
+        let ctx = this.model.canvas;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.redraw();
+    }
+
     drawSpriteRectangle(spriteInfo) {
         let ctx = this.model.canvas;
         ctx.beginPath();

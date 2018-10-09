@@ -124,11 +124,11 @@ export default class SpritesListComponent extends Component {
                 }
 
                 <div className={styles['github-buttons']}>
-                    <a class="github-button" href="https://github.com/inceon" data-show-count="true"
+                    <a className="github-button" href="https://github.com/inceon" data-show-count="true"
                        aria-label="Follow @inceon on GitHub">Follow</a>
-                    <a class="github-button" href="https://github.com/inceon/sprite-decompiller/subscription"
+                    <a className="github-button" href="https://github.com/inceon/sprite-decompiller/subscription"
                        data-show-count="true" aria-label="Watch inceon/sprite-decompiller on GitHub">Watch</a>&nbsp;
-                    <a class="github-button" href="https://github.com/inceon/sprite-decompiller" data-show-count="true"
+                    <a className="github-button" href="https://github.com/inceon/sprite-decompiller" data-show-count="true"
                        aria-label="Star inceon/sprite-decompiller on GitHub">Star</a>
                 </div>
             </div>

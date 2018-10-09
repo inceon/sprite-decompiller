@@ -12,17 +12,31 @@ $bg-color: #e0f7fa;
     max-height: 100vh;
     overflow: hidden;
 
-    .bg-changer {
+    .changers {
         position: absolute;
         right: calc(100vw / 4.8);
         display: block;
-        width: 25px;
-        height: 25px;
-        background: #fff url(/Graph-paper.svg);
-        background-size: cover;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        cursor: pointer;
+        .bg-changer {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #fff url(/Graph-paper.svg);
+            background-size: cover;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .zoom-reset {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #fff url(/fullscreen.svg);
+            background-size: cover;
+            opacity: 0.4;
+            cursor: pointer;
+        }
     }
 
     .drop-zone {
